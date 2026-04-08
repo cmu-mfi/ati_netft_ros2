@@ -9,6 +9,16 @@ launch:
       name: "netft_ip"
       default: "192.168.1.1"
 
+  - arg:
+      name: "cpf"
+      default: "600000"
+    # Obtain these values from netftapi2.xml
+
+  - arg:
+      name: "cpt"
+      default: "1000000"
+    # Obtain these values from netftapi2.xml
+
   - node:
       pkg: "ati_netft"
       exec: "netft"

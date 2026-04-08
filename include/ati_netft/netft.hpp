@@ -13,8 +13,6 @@
 constexpr int PORT = 49152;
 constexpr int COMMAND = 2;
 constexpr int NUM_SAMPLES = 1;
-constexpr int CPF = 600000;
-constexpr int CPT = 1000000;
 
 using uint32 = uint32_t;
 using int32  = int32_t;
@@ -31,7 +29,7 @@ struct Response {
 
 class NetFT {
     public:
-        NetFT(const char *ipAddress) {
+        NetFT(const char *ipAddress, int cpf, int cpt): cpf_(cpf), cpt_(cpt) {
             // Create socket
             socketHandle_ = socket(AF_INET, SOCK_DGRAM, 0);
             if (socketHandle_ == -1) {
@@ -87,10 +85,10 @@ class NetFT {
             // Convert to real values
             std::array<double, 6> ft{};
             for (int i = 0; i < 3; i++) {
-                ft[i] = static_cast<double>(resp.FTData[i]) / CPF;
+                ft[i] = static_cast<double>(resp.FTData[i]) / cpf_;
             }
             for (int i = 3; i < 6; i++) {
-                ft[i] = static_cast<double>(resp.FTData[i]) / CPT;
+                ft[i] = static_cast<double>(resp.FTData[i]) / cpt_;
             }
 
             const std::array<std::string, 6> AXES = {"Fx", "Fy", "Fz", "Tx", "Ty", "Tz"};
@@ -116,5 +114,6 @@ class NetFT {
     private:
         int socketHandle_;
         std::array<byte, 8> request_{};
+        int cpf_, cpt_; // Counts per force/torque unit
 
 };

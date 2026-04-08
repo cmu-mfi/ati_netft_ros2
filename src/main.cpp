@@ -19,9 +19,13 @@ class MinimalPublisher : public rclcpp::Node
     : Node("ft_sensor")
     {
       this->declare_parameter<std::string>("netft_ip", DEFAULT_IP);
+      this->declare_parameter<int>("cpf", 600000);
+      this->declare_parameter<int>("cpt", 1000000);
       std::string ip = this->get_parameter("netft_ip").as_string();
       ip_address_ = ip.c_str();
-      netft_ = new NetFT(ip_address_);
+      int cpf = this->get_parameter("cpf").as_int();
+      int cpt = this->get_parameter("cpt").as_int();
+      netft_ = new NetFT(ip_address_, cpf, cpt);
 
       publisher_ = this->create_publisher<geometry_msgs::msg::WrenchStamped>("ft", 10);
       timer_ = this->create_wall_timer(
