@@ -1,0 +1,17 @@
+%YAML 1.2
+---
+launch:
+  - arg:
+      name: "namespace"
+      default: ""
+
+  - arg:
+      name: "netft_ip"
+      default: "192.168.1.1"
+
+  - node:
+      pkg: "ati_netft"
+      exec: "netft"
+      name: "netft_node"
+      namespace: "$(var namespace)"
+      args: "--ros-args -p netft_ip:=$(var netft_ip) --log-level info"
