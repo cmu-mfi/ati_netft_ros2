@@ -3,7 +3,7 @@ This packages allows users to easily integrate the ati netft sensor into their R
 
 This repository is split into two packages:
 1. ati_netft - A ROS2 wrapper for the ATI NetFT force torque sensor as a regular node. 
-2. netft_hardware_interface - A ros2_control harware inteface for the sensor as well as an example controller config.
+2. netft_hardware_interface - A ros2_control harware inteface for the sensor as well as an example controller configuration.
 
 The source code for reading the sensor data is based on [Net F/T C Sample Code](https://www.ati-ia.com/Products/ft/software/net_ft_software.aspx).
 
@@ -33,7 +33,7 @@ You can configure the launch file by passing these arguments via the command lin
 | Argument | Description | Default Value | Available Choices |
 | :--- | :--- | :--- | :--- |
 | `log_level` | The ROS logging level to use across all nodes. | `error` | `info`, `debug`, `error` |
-| `ns` | Namespace of the sensor. | `""` (empty) | - |
+| `ns` | Namespace of the sensor. | `""` | - |
 | `netft_ip` | IP address of the sensor. | `192.168.19.210` | - |
 | `cpf` | Counts per force. | `600000` | - |
 | `cpt` | Counts per torque. | `1000000` | - |
