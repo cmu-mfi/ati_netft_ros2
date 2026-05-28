@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+<robot name="netft" xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:arg name="tf_prefix" default="" />
+  <xacro:arg name="netft_ip" default="192.168.19.210" />
+  <xacro:arg name="cpf" default="600000" />
+  <xacro:arg name="cpt" default="1000000" />
+  
+  <link name="$(arg tf_prefix)ft_sensor"/>
+
+  <xacro:include filename="$(find netft_hardware_interface)/config/netft.ros2_control_macro.xacro" />
+
+  <xacro:netft_ros2_control_macro tf_prefix="$(arg tf_prefix)" netft_ip="$(arg netft_ip)" cpf="$(arg cpf)" cpt="$(arg cpt)"/>
+</robot>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:macro name="netft_ros2_control_macro" params="tf_prefix netft_ip cpf cpt">
+    <ros2_control name="netft_ros2_control" type="sensor">
+      <hardware>
+        <plugin>netft_hardware_interface/NetftHardwareInterface</plugin>
+        <param name="netft_ip">${netft_ip}</param>
+        <param name="cpf">${cpf}</param>
+        <param name="cpt">${cpt}</param>
+      </hardware>
+      <sensor name="${tf_prefix}ft_sensor">
+        <state_interface name="force.x"/>
+        <state_interface name="force.y"/>
+        <state_interface name="force.z"/>
+        <state_interface name="torque.x"/>
+        <state_interface name="torque.y"/>
+        <state_interface name="torque.z"/>
+      </sensor>
+    </ros2_control>
+  </xacro:macro>
+</robot>

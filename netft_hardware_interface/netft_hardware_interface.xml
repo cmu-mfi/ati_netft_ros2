@@ -1,0 +1,9 @@
+<library path="netft_hardware_interface">
+  <class name="netft_hardware_interface/NetftHardwareInterface" 
+         type="netft_hardware_interface::NetftHardwareInterface" 
+         base_class_type="hardware_interface::SensorInterface">
+    <description>
+      Hardware Interface for ATI NetFT sensor
+    </description>
+  </class>
+</library>
